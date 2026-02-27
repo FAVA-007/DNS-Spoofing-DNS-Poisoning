@@ -6,29 +6,18 @@ Esta carpeta contiene scripts y herramientas para ejecutar ataques DNS (ARP Spoo
 
 ## 📋 Archivos Disponibles
 
-### 1. `bettercap_dns_spoof.cap`
-**Tipo**: Bettercap Configuration
-**Propósito**: Configuración lista para DNS Spoofing
-**Función**: ARP Spoofing + DNS Spoofing del dominio itla.edu.do
+### 1. `dns_poison.py`
+**Tipo**: Python Script
+**Propósito**: DNS Poisoning automatizado con Scapy
+**Función**: Interceptar y inyectar respuestas DNS falsas en tiempo real
 
-```bash
-sudo bettercap -iface eth0 -cap bettercap_dns_spoof.cap
+```python
+python3 dns_poison.py
 ```
 
 ---
 
-### 2. `dns_spoof_monitor.sh`
-**Tipo**: Bash Script
-**Propósito**: Monitorear DNS queries en tiempo real
-**Función**: Capturar y mostrar resoluciones de DNS siendo suplantadas
-
-```bash
-bash dns_spoof_monitor.sh -i eth0 -d itla.edu.do
-```
-
----
-
-### 3. `arp_spoof.py`
+### 2. `arp_spoof.py`
 **Tipo**: Python Script
 **Propósito**: ARP Spoofing manual con Scapy
 **Función**: Posicionarse como MITM antes de DNS spoofing
@@ -39,18 +28,7 @@ python3 arp_spoof.py --gateway 192.168.1.1 --targets 192.168.1.50-254
 
 ---
 
-### 4. `dns_spoof.py`
-**Tipo**: Python Script
-**Propósito**: DNS Spoofing manual con Scapy
-**Función**: Inyectar respuestas DNS falsas
-
-```python
-python3 dns_spoof.py --domain itla.edu.do --ip 192.168.1.100
-```
-
----
-
-### 5. `fake_web_server.py`
+### 3. `fake_web_server.py`
 **Tipo**: Python Script
 **Propósito**: Servidor web malicioso (phishing)
 **Función**: Simular sitio de ITLA para capturar credenciales
@@ -61,7 +39,7 @@ python3 fake_web_server.py --port 80 --template itla_phishing.html
 
 ---
 
-### 6. `dns_detector.py`
+### 4. `dns_detector.py`
 **Tipo**: Python Script
 **Propósito**: Detectar intentos de DNS spoofing
 **Función**: Monitorear inconsistencias en respuestas DNS
@@ -72,7 +50,7 @@ python3 dns_detector.py --domains itla.edu.do,google.com --alert-email admin@itl
 
 ---
 
-### 7. `mitm_traffic_capture.sh`
+### 5. `mitm_traffic_capture.sh`
 **Tipo**: Bash Script
 **Propósito**: Capturar tráfico MITM con tcpdump
 **Función**: Registrar credenciales y datos enviados después del spoofing
